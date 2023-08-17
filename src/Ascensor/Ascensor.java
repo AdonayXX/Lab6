@@ -8,6 +8,7 @@ package Ascensor;
  *
  * @author wendy
  */
+// 
 public class Ascensor {
-    
+    //////jajajajja
 }
