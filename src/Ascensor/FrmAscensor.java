@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Ascensor;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JTextField;
-import javax.swing.Timer;
+package Ascensor;
 
 /**
  *
@@ -15,33 +7,8 @@ import javax.swing.Timer;
  */
 public class FrmAscensor extends javax.swing.JFrame {
 
-     private JTextField[] pisos;
-    private int currentFloor = 1;
-  
-
     public FrmAscensor() {
         initComponents();
-        pisos = new JTextField[]{
-            Piso1, Piso2, Piso3, Piso4, Piso5,
-            Piso6, Piso7, Piso8, Piso9, Piso10
-        };
-
-        // Agregar controladores de eventos a los botones de "Subir" y "Bajar"
-        for (int i = 0; i < 10; i++) {
-            final int floor = i + 1;
-            SubirPiso(floor).addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    moverAscensor(floor);
-                }
-            });
-            BajarPiso(floor).addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    moverAscensor(floor);
-                }
-            });
-        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,65 +163,6 @@ public class FrmAscensor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boton1ActionPerformed
 
-    
-     private javax.swing.JButton SubirPiso(int piso) {
-        return switch (piso) {
-            case 1 -> SubirPiso1;
-            case 2 -> SubirPiso2;
-            case 3 -> SubirPiso3;
-            case 4 -> SubirPiso4;
-            case 5 -> SubirPiso5;
-            case 6 -> SubirPiso6;
-            case 7 -> SubirPiso7;
-            case 8 -> SubirPiso8;
-            case 9 -> SubirPiso9;
-            case 10 -> SubirPiso10;
-            default -> null;
-        };
-    }
-
-    private javax.swing.JButton BajarPiso(int piso) {
-        return switch (piso) {
-            case 1 -> Bajar1;
-            case 2 -> Bajar2;
-            case 3 -> Bajar3;
-            case 4 -> Bajar4;
-            case 5 -> Bajar5;
-            case 6 -> Bajar6;
-            case 7 -> Bajar7;
-            case 8 -> Bajar8;
-            case 9 -> Bajar9;
-            case 10 -> Bajar10;
-            default -> null;
-        };
-    }
-
-    private void moverAscensor(int floor) {
-        if (floor != currentFloor) {
-            Timer timer = new Timer(500, new ActionListener() {
-                int current = currentFloor;
-                int target = floor;
-                
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (current < target) {
-                        current++;
-                        pisos[current - 1].setText("•");
-                        pisos[current - 2].setText("");
-                    } else if (current > target) {
-                        current--;
-                        pisos[current - 1].setText("•");
-                        pisos[current].setText("");
-                    } else {
-                        ((Timer) e.getSource()).stop();
-                    }
-                }
-            });
-            
-            timer.start();
-            currentFloor = floor;
-        }
-    }
     /**
      * @param args the command line arguments
      */
