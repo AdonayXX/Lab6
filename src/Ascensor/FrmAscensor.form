@@ -197,11 +197,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Subir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBajar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bajar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBajarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

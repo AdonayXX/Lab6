@@ -6,9 +6,11 @@ package Ascensor;
  * @author ekard
  */
 public class FrmAscensor extends javax.swing.JFrame {
-
+    
+    private Ascensor ascensor;
     public FrmAscensor() {
         initComponents();
+        ascensor = new Ascensor();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,8 +110,18 @@ public class FrmAscensor extends javax.swing.JFrame {
         spinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnSubir.setText("Subir");
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
 
         btnBajar.setText("Bajar");
+        btnBajar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,9 +172,39 @@ public class FrmAscensor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton1ActionPerformed
-        // TODO add your handling code here:
+        int selectedFloor = (int) spinner.getValue(); // Obtener el piso seleccionado en el Spinner
+        direccionEnum currentDirection = ascensor.getDireccion(); // Obtener la dirección actual del ascensor
+        
+        // Llamar al método llamar del ascensor con el piso seleccionado y la dirección actual
+        ascensor.llamar(new classPiso(selectedFloor), currentDirection);
+        
+        // Actualizar el contenido del TextField con el estado actual del ascensor
+        actualizarEstadoAscensor();
     }//GEN-LAST:event_boton1ActionPerformed
 
+    private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
+        ascensor.mover(); // Mover el ascensor (simulación)
+        
+        // Actualizar el contenido del TextField con el estado actual del ascensor
+        actualizarEstadoAscensor();
+                                   
+    }//GEN-LAST:event_btnSubirActionPerformed
+
+    private void btnBajarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajarActionPerformed
+        ascensor.mover(); // Mover el ascensor (simulación)
+        
+        // Actualizar el contenido del TextField con el estado actual del ascensor
+        actualizarEstadoAscensor();
+    }//GEN-LAST:event_btnBajarActionPerformed
+
+    
+    private void actualizarEstadoAscensor() {
+        classPiso currentFloor = ascensor.getPisoActual();
+        direccionEnum currentDirection = ascensor.getDireccion();
+        
+        // Actualizar el contenido del TextField con el estado actual del ascensor
+        cajaTexto.setText("Piso actual: " + currentFloor + "" + currentDirection);
+    }
     /**
      * @param args the command line arguments
      */
